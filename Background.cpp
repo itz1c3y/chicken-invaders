@@ -20,7 +20,7 @@ Background::Background(int screenWidth , int screenHeight , QGraphicsItem* paren
 }
 
 void  Background::moveBackground() {
-    currentX = (currentX + 7) % scaledImage->height();
+    currentX = (currentX + 2) % scaledImage->height();
     QPixmap croppedImage;
     int remindingHeight = scaledImage->height() - currentX;
     if (currentX < 0)
