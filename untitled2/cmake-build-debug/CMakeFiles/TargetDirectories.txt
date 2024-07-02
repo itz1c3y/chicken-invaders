@@ -1,0 +1,5 @@
+C:/Users/Sahraee/CLionProjects/untitled2/cmake-build-debug/CMakeFiles/untitled2.dir
+C:/Users/Sahraee/CLionProjects/untitled2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Sahraee/CLionProjects/untitled2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Sahraee/CLionProjects/untitled2/cmake-build-debug/CMakeFiles/untitled2_autogen_timestamp_deps.dir
+C:/Users/Sahraee/CLionProjects/untitled2/cmake-build-debug/CMakeFiles/untitled2_autogen.dir
