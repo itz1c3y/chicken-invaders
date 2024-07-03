@@ -12,13 +12,18 @@ find_package(Qt6 COMPONENTS
         Core
         Gui
         Widgets
+        Multimedia
         REQUIRED)
 
-add_executable(untitled2 main.cpp myRect.cpp myRect.h Bullet.cpp Bullet.h Enemy.cpp Enemy.h Game.cpp Game.h)
+add_executable(untitled2 main.cpp myRect.cpp myRect.h Bullet.cpp Bullet.h Enemy.cpp Enemy.h Game.cpp Game.h
+        SpaceShip.h
+        SpaceShip.cpp
+        resourse.qrc)
 target_link_libraries(untitled2
         Qt::Core
         Qt::Gui
         Qt::Widgets
+        Qt::Multimedia
         )
 
 if (WIN32 AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)

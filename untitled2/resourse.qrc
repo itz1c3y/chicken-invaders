@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="spaceship">resources/images/spaceship.png</file>
+        <file alias="bullet">resources/images/bullet.png</file>
+    </qresource>
+</RCC>
