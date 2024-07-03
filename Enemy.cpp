@@ -12,7 +12,7 @@ Enemy::Enemy(int sceneWidth, int sceneHeight, QGraphicsItem *parent) : QGraphics
     frames.append(new QPixmap(scaledPixmap));
 
     winingTimer = new QTimer();
-    winingTimer->setInterval(100);
+    winingTimer->setInterval(150);
     connect(winingTimer , &QTimer::timeout , this , Enemy::wining);
     winingTimer->start();
 
