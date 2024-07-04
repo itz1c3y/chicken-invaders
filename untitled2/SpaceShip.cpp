@@ -38,14 +38,14 @@ void SpaceShip::wewe(){
 void SpaceShip::moveLeft() {
     moveAnimator->stop();
     moveAnimator->setStartValue(x());
-    moveAnimator->setEndValue(maxLeft);
+    moveAnimator->setEndValue(x() + 10);
     moveAnimator->start();
 }
 
 void SpaceShip::moveRight() {
     moveAnimator->stop();
     moveAnimator->setStartValue(x());
-    moveAnimator->setEndValue(maxRight);
+    moveAnimator->setEndValue(x() - 10);
     moveAnimator->start();
 }
 

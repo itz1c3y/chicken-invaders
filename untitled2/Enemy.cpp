@@ -1,30 +1,49 @@
 #include "Enemy.h"
-#include <QTimer>
-#include <QGraphicsScene>
-#include <QList>
-#include <stdlib.h> // rand() -> really large int
 
-#include <QDebug>
-Enemy::Enemy(): QObject(), QGraphicsRectItem(){
-    //set random position
-    int random_number = rand() % 700;
-    setPos(random_number,0);
+Enemy::Enemy(int sceneWidth, int sceneHeight, QGraphicsItem *parent) : QGraphicsPixmapItem(parent) {
 
-    // drew the rect
-    setRect(0,0,100,100);
+    auto pixmap = new QPixmap(":/images/chicken");
+    auto scaledPixmap = pixmap->scaled(64 , 61);
+    setPixmap(scaledPixmap);
+    frames.append(new QPixmap(scaledPixmap));
 
-    // connect
-    QTimer * timer = new QTimer(this);
-    connect(timer,SIGNAL(timeout()),this,SLOT(move()));
+    pixmap = new QPixmap(":/images/chicken2");
+    scaledPixmap = pixmap->scaled(64 , 61);
+    frames.append(new QPixmap(scaledPixmap));
 
-    timer->start(50);
+    winingTimer = new QTimer();
+    winingTimer->setInterval(150);
+    connect(winingTimer , &QTimer::timeout , this , &Enemy::wining);
+    winingTimer->start();
+
+    auto x = (sceneWidth - scaledPixmap.width()) / 2;
+    auto y = 0;
+
+    groundY = sceneHeight - 100;
+
+    heightAnimator = new QPropertyAnimation(this, "height", this);
+    heightAnimator->setStartValue(y);
+    heightAnimator->setEndValue(y);
+    heightAnimator->setDuration(5000);
+    heightAnimator->start();
+    connect(heightAnimator, &QPropertyAnimation::finished, this, &Enemy::gravity);
+
+    // testing position(change it)
+    setPos(x, y);
+
 }
 
-void Enemy::move(){
-    // move enemy down
-    setPos(x(),y()+5);
-    if (pos().y() + rect().height() < 0){
-        scene()->removeItem(this);
-        delete this;
-    }
+void Enemy::wining() {
+    setPixmap(*frames.at(frame));
+    frame = (frame + 1) % 2;
+}
+
+void Enemy::gravity() {
+    heightAnimator->stop();
+    heightAnimator->setStartValue(y());
+    heightAnimator->setEndValue(groundY);
+    heightAnimator->setDuration(10000);
+    heightAnimator->setEasingCurve(QEasingCurve::Linear);
+    heightAnimator->start();
+
 }
