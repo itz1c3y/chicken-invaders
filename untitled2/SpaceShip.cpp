@@ -38,14 +38,16 @@ void SpaceShip::wewe(){
 void SpaceShip::moveLeft() {
     moveAnimator->stop();
     moveAnimator->setStartValue(x());
-    moveAnimator->setEndValue(x() + 10);
+    moveAnimator->setEndValue(x() + 20);
+    moveAnimator->setEasingCurve(QEasingCurve::Linear);
     moveAnimator->start();
 }
 
 void SpaceShip::moveRight() {
     moveAnimator->stop();
     moveAnimator->setStartValue(x());
-    moveAnimator->setEndValue(x() - 10);
+    moveAnimator->setEndValue(x() - 20);
+    moveAnimator->setEasingCurve(QEasingCurve::Linear);
     moveAnimator->start();
 }
 
@@ -53,10 +55,12 @@ void SpaceShip::keyPressEvent(QKeyEvent *event) {
     QGraphicsItem::keyPressEvent(event);
 
     if(event->key() == Qt::Key::Key_Left){
-        moveLeft();
+        if (pos().x() > 480)
+            moveLeft();
     }
 
     if(event->key() == Qt::Key::Key_Right){
-        moveRight();
+        if (pos().x() + 20 < 1440)
+            moveRight();
     }
 }
