@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix = "/images">
+        <file alias ="bg">resources/images/background.png</file>
+        <file alias ="blt">resources/images/bullet.png</file>
+        <file alias ="chicken">resources/images/chicken.png</file>
+        <file alias ="spc">resources/images/spaceship1.png</file>
+    </qresource>
+</RCC>
